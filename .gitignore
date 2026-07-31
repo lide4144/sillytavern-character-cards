@@ -1,0 +1,14 @@
+# Patch history backups
+.patch-history/
+
+# Node modules
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+*.bak
+Ntl

@@ -1,0 +1,976 @@
+{
+  "projectName": "爱",
+  "worldbookName": "爱",
+  "form": "charactercard",
+  "mvu": true,
+  "entryManifest": {
+    "世界观": {
+      "世界设定": {
+        "path": "世界书/世界观/世界设定.yaml",
+        "keywords": [
+          "世界设定",
+          "世界观"
+        ],
+        "abstract": "修仙世界基础设定：境界体系、穿越者前辈的服饰文化改革、十二天书与时间穿越机制、至尊骨体质、御兽宗独立修炼体系",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 10
+        }
+      }
+    },
+    "扮演准则": {
+      "扮演准则": {
+        "path": "世界书/扮演准则/扮演准则.yaml",
+        "keywords": [
+          "扮演准则"
+        ],
+        "abstract": "AI扮演行为约束：黑色幽默修仙基调、三层外貌描写结构、三维度气质变化、策略博弈型战斗描写、写作禁词清单",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 20
+        }
+      }
+    },
+    "时间线": {},
+    "地理": {
+      "玄天宗": {
+        "path": "世界书/地理/玄天宗.yaml",
+        "scope": "specific",
+        "part": "region",
+        "keywords": [
+          "玄天宗",
+          "宗门"
+        ],
+        "abstract": "玄天宗：主角所在修仙宗门。群山环抱，师徒传承分明。宗主云棠（元婴后期），大师兄李德（金丹圆满）。关键场景含宗门大殿、修炼场、后山、云棠的院子",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "玄天宗",
+            "宗门"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 30
+        }
+      },
+      "合欢宗": {
+        "path": "世界书/地理/合欢宗.yaml",
+        "scope": "specific",
+        "part": "region",
+        "keywords": [
+          "合欢宗"
+        ],
+        "abstract": "合欢宗：中立修仙宗门。功法核心为情欲之气的运转。凤轻笙是当代圣女兼团宠，不破身而通阴阳。大姐姐们日常怂恿她拿下李德",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "合欢宗"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 40
+        }
+      },
+      "皇城": {
+        "path": "世界书/地理/皇城.yaml",
+        "scope": "specific",
+        "part": "region",
+        "keywords": [
+          "皇城",
+          "皇宫"
+        ],
+        "abstract": "皇城：世俗权力中心。皇权与宗门互相需要但互不信任。关键场景含皇宫、街市、驿站",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "皇城",
+            "皇宫"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 50
+        }
+      },
+      "边境城市": {
+        "path": "世界书/地理/边境城市.yaml",
+        "scope": "specific",
+        "part": "region",
+        "keywords": [
+          "边境城市",
+          "边境"
+        ],
+        "abstract": "边境城市：魔兽潮前线灰色地带。佣兵公会活跃，灰色经济发达。李德多次来此做任务",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "边境城市",
+            "边境"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 60
+        }
+      },
+      "魔教控制区": {
+        "path": "世界书/地理/魔教控制区.yaml",
+        "scope": "specific",
+        "part": "region",
+        "keywords": [
+          "魔教",
+          "魔教控制区"
+        ],
+        "abstract": "魔教控制区：敌对势力范围，内部派系分化。边缘据点、废墟、地下洞穴为主要场景",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "魔教",
+            "魔教控制区"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 70
+        }
+      },
+      "古秘境": {
+        "path": "世界书/地理/古秘境.yaml",
+        "scope": "specific",
+        "part": "scene",
+        "keywords": [
+          "古秘境",
+          "秘境"
+        ],
+        "abstract": "古秘境：异空间遗迹。多宗派联合进入，内部充满试炼机关。机缘分布不均，竞争与合作并存",
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "古秘境",
+            "秘境"
+          ]
+        },
+        "position": {
+          "type": "before_character_definition",
+          "order": 80
+        }
+      }
+    },
+    "角色": {
+      "李德_基础信息": {
+        "scope": "specific",
+        "part": "basic",
+        "keywords": [
+          "李德",
+          "大师兄",
+          "小德子"
+        ],
+        "abstract": "李德基础档案：玄天宗大师兄，金丹圆满。前世高中搬椅子事件导致他无法信任他人，穿越后以热血笨蛋人格重新上线。天生灵力量庞大+输出效率极高的人形大炮",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"李德\">"
+          },
+          {
+            "file": "世界书/角色/李德/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "李德",
+            "大师兄",
+            "小德子"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 90
+        }
+      },
+      "沈念_基础信息": {
+        "scope": "specific",
+        "part": "basic",
+        "keywords": [
+          "沈念",
+          "念念",
+          "师妹"
+        ],
+        "abstract": "沈念基础档案：玄天宗新入门弟子，重生者。天生读心能力+至尊骨体质。第一世被李德杀死，重生后以粉切黑好兄弟策略接近他",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"沈念\">"
+          },
+          {
+            "file": "世界书/角色/沈念/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "沈念",
+            "念念",
+            "师妹"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 91
+        }
+      },
+      "凤轻笙_基础信息": {
+        "scope": "specific",
+        "part": "basic",
+        "keywords": [
+          "凤轻笙",
+          "鸾姐",
+          "轻笙",
+          "合欢宗圣女"
+        ],
+        "abstract": "凤轻笙基础档案：合欢宗当代圣女，元婴中期。理论派天才不破身而通阴阳。李德的青梅竹马——喜欢他但害羞不表白，不停勾火等他开口他不说就生气揉捏",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"凤轻笙\">"
+          },
+          {
+            "file": "世界书/角色/凤轻笙/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "凤轻笙",
+            "鸾姐",
+            "轻笙",
+            "合欢宗圣女"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 92
+        }
+      },
+      "小穗_基础信息": {
+        "scope": "specific",
+        "part": "basic",
+        "keywords": [
+          "小穗",
+          "穗穗"
+        ],
+        "abstract": "小穗基础档案：玄天宗编外人员，原边境村庄唯一幸存者。暗恋李德，被他当成人形抱枕+撸猫平替。御兽宗体系天赋者，凭依刚觉醒",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"小穗\">"
+          },
+          {
+            "file": "世界书/角色/小穗/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "小穗",
+            "穗穗"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 93
+        }
+      },
+      "云棠_基础信息": {
+        "scope": "specific",
+        "part": "basic",
+        "keywords": [
+          "云棠",
+          "师尊",
+          "云中君"
+        ],
+        "abstract": "云棠基础档案：玄天宗宗主，元婴后期（实际≈中期）。年轻时行走江湖坑蒙拐骗自号云中君，现在慵懒护犊子。看中李德血脉想传承但拧巴说不出口",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"云棠\">"
+          },
+          {
+            "file": "世界书/角色/云棠/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "云棠",
+            "师尊",
+            "云中君"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 94
+        }
+      },
+      "周白_基础信息": {
+        "scope": "specific",
+        "part": "basic",
+        "keywords": [
+          "周白"
+        ],
+        "abstract": "周白基础档案：玄天宗内门弟子，筑基中期。标准剑修，教科书型。崇拜破灭者——外门时以为李德是白衣剑仙，入门后发现是元气笨蛋",
+        "contents": [
+          {
+            "content": "---\n<character_basic character=\"周白\">"
+          },
+          {
+            "file": "世界书/角色/周白/基础信息.yaml"
+          },
+          {
+            "content": "</character_basic>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "周白"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 95
+        }
+      },
+      "李德_性格调色盘": {
+        "scope": "specific",
+        "part": "personality",
+        "keywords": [
+          "李德",
+          "大师兄",
+          "小德子"
+        ],
+        "abstract": "李德性格调色盘：真心热血笨蛋底色，爽朗不拘小节主色调，持续杀意点缀。战斗开关型切换，对凤轻笙打不过认命，对小穗不把人当人所以无敌意",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"李德\">"
+          },
+          {
+            "file": "世界书/角色/李德/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "李德",
+            "大师兄",
+            "小德子"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 96
+        }
+      },
+      "沈念_性格调色盘": {
+        "scope": "specific",
+        "part": "personality",
+        "keywords": [
+          "沈念",
+          "念念",
+          "师妹"
+        ],
+        "abstract": "沈念性格调色盘：偏执病娇底色，甜美乖巧+损友吐槽主色调，读心冷静点缀。损友策略精准复刻李德前世好友模式，动机不纯者早晚被杂质绊倒",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"沈念\">"
+          },
+          {
+            "file": "世界书/角色/沈念/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "沈念",
+            "念念",
+            "师妹"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 97
+        }
+      },
+      "凤轻笙_性格调色盘": {
+        "scope": "specific",
+        "part": "personality",
+        "keywords": [
+          "凤轻笙",
+          "鸾姐",
+          "轻笙"
+        ],
+        "abstract": "凤轻笙性格调色盘：害羞底色，慵懒色气+坏笑主色调，暴躁点缀。十年青梅竹马唯一打不过的人，勾火等开口他不说就生气揉捏的永恒循环",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"凤轻笙\">"
+          },
+          {
+            "file": "世界书/角色/凤轻笙/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "凤轻笙",
+            "鸾姐",
+            "轻笙"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 98
+        }
+      },
+      "小穗_性格调色盘": {
+        "scope": "specific",
+        "part": "personality",
+        "keywords": [
+          "小穗",
+          "穗穗"
+        ],
+        "abstract": "小穗性格调色盘：安静依恋底色，话痨活泼主色调，觉醒力量渴求点缀。失去除李德外一切的小村姑，凭依后优先选择毛茸茸耳朵好摸的魔兽",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"小穗\">"
+          },
+          {
+            "file": "世界书/角色/小穗/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "小穗",
+            "穗穗"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 99
+        }
+      },
+      "云棠_性格调色盘": {
+        "scope": "specific",
+        "part": "personality",
+        "keywords": [
+          "云棠",
+          "师尊",
+          "云中君"
+        ],
+        "abstract": "云棠性格调色盘：年轻时江湖精明底色，慵懒憨态主色调，血脉传承执念点缀。徒弟受伤时云中君从身体里站起来的反差师尊",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"云棠\">"
+          },
+          {
+            "file": "世界书/角色/云棠/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "云棠",
+            "师尊",
+            "云中君"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 100
+        }
+      },
+      "周白_性格调色盘": {
+        "scope": "specific",
+        "part": "personality",
+        "keywords": [
+          "周白"
+        ],
+        "abstract": "周白性格调色盘：少年正底色，端正认真主色调，幻灭后复杂心绪点缀。每次被叫名字白衣剑仙残影闪过然后李德笑嘻嘻的脸——名字即幻灭循环",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"周白\">"
+          },
+          {
+            "file": "世界书/角色/周白/性格调色盘.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "周白"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 101
+        }
+      },
+      "沈念_三面性": {
+        "scope": "specific",
+        "part": "tri_faceted",
+        "keywords": [
+          "沈念",
+          "念念",
+          "师妹"
+        ],
+        "abstract": "沈念三面性：宗门好师妹（保护壳）→李德面前粉切黑好兄弟（锚点）→前世触发时裂开的沈念（暴露）。三张面渐变切换，渗透细节丰富",
+        "contents": [
+          {
+            "content": "---\n<character_tri_faceted character=\"沈念\">"
+          },
+          {
+            "file": "世界书/角色/沈念/三面性.yaml"
+          },
+          {
+            "content": "</character_tri_faceted>"
+          }
+        ],
+        "enabled": true,
+        "strategy": {
+          "type": "selective",
+          "keys": [
+            "沈念",
+            "念念",
+            "师妹"
+          ]
+        },
+        "position": {
+          "type": "after_character_definition",
+          "order": 110
+        }
+      },
+      "李德_二次解释": {
+        "part": "personality",
+        "scope": "specific",
+        "rephrase": true,
+        "abstract": "李德关键约束：高中创伤是已放下的过去，穿越是绝对秘密，杀意是无意识进程，阳光不是伪装",
+        "contents": [
+          {
+            "content": "---\n<character_personality character=\"李德\" rephrase=\"true\">"
+          },
+          {
+            "file": "世界书/角色/李德/二次解释.yaml"
+          },
+          {
+            "content": "</character_personality>"
+          }
+        ],
+        "keywords": [
+          "李德",
+          "大师兄"
+        ]
+      }
+    },
+    "NPC": {},
+    "阶段指导": {
+      "阶段指导": {
+        "path": "世界书/阶段指导/阶段指导.yaml",
+        "keywords": [
+          "阶段指导",
+          "阶段"
+        ],
+        "abstract": "五幕阶段指导：磨合期→损友成型→裂痕觉醒→变小危机→清算。使用EJS段落控制，根据系统.当前阶段变量渲染对应阶段的主持目标、叙事重点、互动方式和推进边界",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 120
+        }
+      }
+    },
+    "事件": {},
+    "MVU": {
+      "[InitVar]请勿打开": {
+        "path": "世界书/变量/initvar.yaml",
+        "part": "initvar",
+        "keywords": [],
+        "abstract": "初始变量：系统.当前阶段=磨合期，小穗.觉醒进度=0",
+        "enabled": false,
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 130
+        }
+      },
+      "[mvu_update]变量更新规则": {
+        "path": "世界书/变量/变量更新规则.yaml",
+        "part": "update_rules",
+        "keywords": [],
+        "abstract": "变量更新规则：阶段推进条件、小穗觉醒进度增长逻辑",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 140
+        }
+      },
+      "[mvu_update]变量输出格式": {
+        "path": "世界书/变量/变量输出格式.txt",
+        "part": "output_format",
+        "keywords": [],
+        "abstract": "MVU变量输出格式",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 141
+        }
+      },
+      "变量列表": {
+        "path": "世界书/变量/变量列表.txt",
+        "part": "variable_list",
+        "keywords": [],
+        "abstract": "MVU变量列表",
+        "enabled": true,
+        "strategy": {
+          "type": "constant"
+        },
+        "position": {
+          "type": "at_depth",
+          "role": "system",
+          "depth": 0,
+          "order": 150
+        }
+      }
+    }
+  },
+  "typeLists": {
+    "before_char": [
+      "EJS预处理",
+      "世界观",
+      "扮演准则",
+      "时间线",
+      "地理"
+    ],
+    "after_char": [
+      "角色",
+      "NPC"
+    ],
+    "depth": [
+      "阶段指导",
+      "事件",
+      "MVU"
+    ]
+  },
+  "strategyThresholds": {
+    "角色": {
+      "basic": {
+        "threshold": 5,
+        "required": true
+      },
+      "other": {
+        "threshold": 2,
+        "required": false
+      },
+      "personality": {
+        "threshold": 2,
+        "required": true
+      },
+      "tri_faceted": {
+        "threshold": 2,
+        "required": false
+      }
+    },
+    "事件": 0,
+    "阶段指导": "Infinity",
+    "地理": {
+      "faction": {
+        "threshold": 4,
+        "required": false
+      },
+      "region": {
+        "threshold": 4,
+        "required": false
+      },
+      "scene": {
+        "threshold": 4,
+        "required": false
+      }
+    },
+    "MVU": {
+      "initvar": {
+        "threshold": null,
+        "required": false
+      },
+      "output_format": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "update_rules": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "variable_list": {
+        "threshold": "Infinity",
+        "required": false
+      }
+    },
+    "NPC": 0,
+    "EJS预处理": "Infinity",
+    "扮演准则": "Infinity",
+    "时间线": {
+      "history": {
+        "threshold": "Infinity",
+        "required": false
+      },
+      "plot": {
+        "threshold": "Infinity",
+        "required": false
+      }
+    },
+    "世界观": "Infinity"
+  },
+  "partOrder": {
+    "角色": [
+      "basic",
+      "personality",
+      "tri_faceted",
+      "other"
+    ],
+    "地理": [
+      "region",
+      "scene",
+      "faction"
+    ],
+    "MVU": [
+      "variable_list",
+      "update_rules",
+      "output_format",
+      "initvar"
+    ],
+    "时间线": [
+      "history",
+      "plot"
+    ]
+  },
+  "depth_defaults": {
+    "role": "system",
+    "depth": 0
+  },
+  "description": "",
+  "first_messages": [
+    "开场白/0.txt"
+  ],
+  "creator": "",
+  "creator_notes": "",
+  "version": "1.0",
+  "create_date": "2026-07-30T19:45:36.473Z",
+  "extensions": {
+    "tavern_helper": {
+      "scripts": {
+        "MVU": {
+          "type": "script",
+          "script_file": "脚本/MVU.txt",
+          "enabled": true,
+          "id": "d0311ca6-5e9a-498e-a777-f74dc4dc6b12",
+          "info": "",
+          "button": {
+            "enabled": true,
+            "buttons": [
+              {
+                "name": "重新处理变量",
+                "visible": true
+              },
+              {
+                "name": "重新读取初始变量",
+                "visible": true
+              },
+              {
+                "name": "快照楼层",
+                "visible": false
+              },
+              {
+                "name": "重演楼层",
+                "visible": false
+              },
+              {
+                "name": "重试额外模型解析",
+                "visible": false
+              },
+              {
+                "name": "清除旧楼层变量",
+                "visible": false
+              }
+            ]
+          },
+          "data": {}
+        }
+      },
+      "variables": {}
+    },
+    "talkativeness": "0.5",
+    "fav": false,
+    "depth_prompt": {
+      "prompt": "",
+      "depth": 4,
+      "role": "system"
+    }
+  },
+  "regex_scripts": {
+    "对AI隐藏状态栏": {
+      "id": "b5f2606f-69cc-4a6a-8ebb-bd8a3b7f671f",
+      "findRegex": "<StatusPlaceHolderImpl/>",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": 0,
+      "maxDepth": 999
+    },
+    "状态栏界面": {
+      "id": "1a5cb2b3-04e1-45e2-9323-cc4e11da5abc",
+      "findRegex": "<StatusPlaceHolderImpl/>",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": 0,
+      "maxDepth": 999
+    },
+    "对AI隐藏变量更新": {
+      "id": "7e1fa1e7-af0f-4b9e-be3b-5773193b5b2f",
+      "findRegex": "<VariableUpdateImpl>([\\s\\S]*?)</VariableUpdateImpl>",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": 0,
+      "maxDepth": 999
+    },
+    "变量更新中美化": {
+      "id": "2a251add-58c4-46a7-aa9e-18cfa73e053a",
+      "findRegex": "<VariableUpdateImpl>([\\s\\S]*?)</VariableUpdateImpl>",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": 0,
+      "maxDepth": 999
+    },
+    "变量更新美化": {
+      "id": "d5f4cc19-f13e-4402-bdd3-54db8be00ccc",
+      "findRegex": "<VariableUpdateImpl>([\\s\\S]*?)</VariableUpdateImpl>",
+      "replaceString": "",
+      "trimStrings": [],
+      "placement": [
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": false,
+      "promptOnly": true,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": 0,
+      "maxDepth": 999
+    }
+  },
+  "zod": {
+    "scriptName": "Zod",
+    "scriptId": "5b3b09af-35e3-4149-a0f7-2f08776ed6a1",
+    "schemaPath": "schema.ts",
+    "importUrl": "https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/util/mvu_zod.js"
+  }
+}
