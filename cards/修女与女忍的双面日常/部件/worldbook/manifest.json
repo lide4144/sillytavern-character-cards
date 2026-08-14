@@ -1,0 +1,12 @@
+[
+  { "file": "01_初始变量.json", "name": "[initvar]初始变量", "keys": [], "constant": false, "enabled": false, "position": "before_char", "order": 0 },
+  { "file": "02_变量列表.txt", "name": "变量列表", "keys": [], "constant": true, "enabled": true, "position": "after_char", "order": 100 },
+  { "file": "03_更新规则与输出格式.txt", "name": "[mvu_update]变量更新规则与输出格式", "keys": [], "constant": true, "enabled": true, "position": "after_char", "order": 101 },
+  { "file": "04_玩法规则·白天经营.txt", "name": "[mvu_plot]玩法规则·白天经营", "keys": [], "constant": true, "enabled": true, "position": "after_char", "order": 102 },
+  { "file": "05_玩法规则·夜间任务.txt", "name": "[mvu_plot]玩法规则·夜间任务", "keys": [], "constant": true, "enabled": true, "position": "after_char", "order": 103 },
+  { "file": "06_表现规则·喜剧与NSFW.txt", "name": "[mvu_plot]表现规则·喜剧与NSFW", "keys": [], "constant": true, "enabled": true, "position": "after_char", "order": 104 },
+  { "file": "07_设定·村庄与教堂.txt", "name": "设定·露米埃尔村与圣露西亚教堂", "keys": ["露米埃尔", "村庄", "教堂", "圣露西亚", "修缮"], "constant": false, "enabled": true, "position": "before_char", "order": 20 },
+  { "file": "08_设定·月影阁.txt", "name": "设定·月影阁与女忍夜百合", "keys": ["月影阁", "夜百合", "女忍", "密信", "忍术", "忍鸦"], "constant": false, "enabled": true, "position": "before_char", "order": 21 },
+  { "file": "09_NPC·村民图鉴.txt", "name": "NPC·村民图鉴", "keys": ["奥托", "梅拉", "布洛克", "皮普", "罗兰", "药草", "村长", "酒馆", "铁匠", "村民"], "constant": false, "enabled": true, "position": "before_char", "order": 22 },
+  { "file": "10_设定·任务剧场.txt", "name": "设定·任务剧场", "keys": ["任务", "委托", "潜入", "陷阱", "机关", "报酬"], "constant": false, "enabled": true, "position": "before_char", "order": 23 }
+]

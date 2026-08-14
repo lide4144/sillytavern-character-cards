@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --gold: #d4af37; --cream: #fff8ec; --ink: #4a3b2a; --pink: #e86a92;
+    --night-bg: #1c2340; --night-ink: #d8ddf5; --night-accent: #8f7ff0; --red: #e04a4a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: transparent; font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif; }
+  .sb {
+    border-radius: 14px; padding: 10px 14px 12px; font-size: 13px; line-height: 1.5;
+    background: linear-gradient(160deg, #fffaf0 0%, #fdeee4 60%, #fbe3ee 100%);
+    color: var(--ink); border: 1px solid #e9d9b8; box-shadow: 0 2px 10px rgba(90, 60, 20, .12);
+  }
+  .sb.night {
+    background: linear-gradient(160deg, #1c2340 0%, #241f4d 60%, #341f4d 100%);
+    color: var(--night-ink); border-color: #4a4472; box-shadow: 0 2px 12px rgba(20, 16, 60, .35);
+  }
+  .sb summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; }
+  .sb summary::-webkit-details-marker { display: none; }
+  .sb .title-sub { font-weight: 400; font-size: 12px; opacity: .75; margin-left: auto; }
+  .grid { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 8px; }
+  .cell { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .cell .ico { width: 18px; text-align: center; }
+  .bar { width: 90px; height: 8px; border-radius: 5px; background: rgba(0,0,0,.12); overflow: hidden; }
+  .night .bar { background: rgba(255,255,255,.14); }
+  .bar > i { display: block; height: 100%; border-radius: 5px; transition: width .5s ease; }
+  .task-card {
+    margin-top: 8px; padding: 8px 10px; border-radius: 10px; font-size: 12.5px;
+    background: rgba(255,255,255,.5); border: 1px dashed rgba(0,0,0,.15);
+  }
+  .night .task-card { background: rgba(0,0,0,.25); border-color: rgba(255,255,255,.2); }
+  .badge { display: inline-block; padding: 0 8px; border-radius: 9px; font-size: 11px; background: var(--gold); color: #fff; }
+  .night .badge { background: var(--night-accent); }
+  .loading { opacity: .6; font-size: 12px; margin-top: 6px; }
+</style>
+</head>
+<body>
+<details class="sb" id="sb" open>
+  <summary id="headline">⛪ 圣露西亚教堂 · 读取中…</summary>
+  <div class="grid" id="main"></div>
+  <div class="task-card" id="task" style="display:none"></div>
+  <div class="loading" id="loading">正在读取变量…（若长时间停留，请确认 MVU 已加载且本楼层变量已初始化）</div>
+</details>
+<script>
+(function () {
+  function host() { try { if (window.parent && window.parent !== window) return window.parent; } catch (e) {} return window; }
+  function getMvu() { var h = host(); return h.Mvu || window.Mvu || null; }
+  function messageId() {
+    var h = host();
+    try { if (typeof h.getCurrentMessageId === 'function') return h.getCurrentMessageId(); } catch (e) {}
+    try { if (typeof getCurrentMessageId === 'function') return getCurrentMessageId(); } catch (e) {}
+    return 'latest';
+  }
+  function readStat() {
+    var M = getMvu(); if (!M) return null;
+    try { var d = M.getMvuData({ type: 'message', message_id: messageId() }); return d && d.stat_data ? d.stat_data : null; }
+    catch (e) { return null; }
+  }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function bar(val, color) {
+    var v = Math.max(0, Math.min(100, Number(val) || 0));
+    return '<span class="bar"><i style="width:' + v + '%;background:' + color + '"></i></span><b>' + v + '</b>';
+  }
+  function cell(ico, label, inner) { return '<span class="cell"><span class="ico">' + ico + '</span>' + label + ' ' + inner + '</span>'; }
+
+  var lastSig = '';
+  function render(st) {
+    var sig = JSON.stringify(st);
+    if (sig === lastSig) return;
+    lastSig = sig;
+
+    var env = st['环境'] || {}, church = st['教堂'] || {}, lil = st['莉莉安'] || {};
+    var night = env['阶段'] === '夜间任务';
+    var sb = document.getElementById('sb');
+    sb.className = 'sb' + (night ? ' night' : '');
+
+    document.getElementById('headline').innerHTML =
+      (night ? '🌙 夜百合 · 忍务中' : '⛪ 圣露西亚教堂 · 营业中') +
+      '<span class="title-sub">' + esc(env['日期']) + ' · ' + esc(env['时段']) + ' · ' + esc(env['所在位置']) + '（第 ' + esc(env['经过天数'] || 1) + ' 天）</span>';
+
+    var html = '';
+    html += cell('💰', '资金', '<b>' + esc(church['持有资金'] || 0) + '</b> 金币');
+    html += cell('🪙', '累计捐款', esc(church['累计捐款'] || 0));
+    html += cell('🔨', '修缮', bar(church['修缮进度'], '#d4af37'));
+    html += cell('📣', '民声', bar(church['民声'], '#e86a92'));
+    html += cell('🏛️', '教堂', '<span class="badge">Lv.' + esc(church['教堂等级'] || 1) + '</span>');
+    html += cell('❤️', '体力', bar(lil['体力'], '#5cb870'));
+    html += cell('🍑', '羞耻', bar(lil['羞耻值'], '#f09ec0'));
+    html += cell('🎭', '暴露', bar(lil['秘密暴露度'], '#9a7ff0'));
+    html += cell('👗', '衣着', esc(lil['当前衣着']));
+    document.getElementById('main').innerHTML = html;
+
+    var tasks = st['任务'] || {}, names = Object.keys(tasks);
+    var taskEl = document.getElementById('task');
+    if (names.length) {
+      var t = tasks[names[0]];
+      taskEl.style.display = '';
+      taskEl.innerHTML = '🗡️ <b>' + esc(names[0]) + '</b>　委托方：' + esc(t['委托方']) +
+        '　目标：' + esc(t['目标']) + '　地点：' + esc(t['地点']) + '　难度：' + esc(t['难度']) +
+        '　状态：' + esc(t['状态']) + '　报酬：' + esc(t['报酬']) + ' 金币<br>⚠️ 败北值 ' + bar(t['败北值'], '#e04a4a');
+    } else { taskEl.style.display = 'none'; taskEl.innerHTML = ''; }
+    document.getElementById('loading').style.display = 'none';
+  }
+
+  function tick() { var st = readStat(); if (st) render(st); }
+
+  // 事件刷新（可用时）+ 轮询兜底（签名一致时零开销）
+  var hooked = false;
+  function tryHook() {
+    if (hooked) return;
+    var M = getMvu(), h = host();
+    var on = h.eventOn || window.eventOn;
+    if (M && M.events && typeof on === 'function') {
+      try { on(M.events.VARIABLE_UPDATE_ENDED, function (vars) { if (vars && vars.stat_data) render(vars.stat_data); }); hooked = true; } catch (e) {}
+    }
+  }
+  var n = 0;
+  var fast = setInterval(function () { tick(); tryHook(); if (++n > 30) clearInterval(fast); }, 400);
+  setInterval(tick, 2000);
+})();
+</script>
+</body>
+</html>
